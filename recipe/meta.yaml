@@ -17,6 +17,7 @@ requirements:
   host:
     - python
   run:
+    - jq
     - m2crypto
     - paramiko
     - pykerberos  # [not win]
@@ -27,6 +28,7 @@ requirements:
 test:
   commands:
     - htgettoken --help
+    - test -x ${PREFIX}/bin/httokendecode  # [unix]
 
 about:
   home: https://github.com/fermitools/htgettoken
