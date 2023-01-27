@@ -10,7 +10,7 @@ source:
   sha256: 984fd4746082086356d968b4db536f7b35d30e65a6589fa357caa3266cb98268
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
 
 requirements:
@@ -32,6 +32,7 @@ test:
   commands:
     - htgettoken --help
     - test -x ${PREFIX}/bin/httokendecode  # [unix]
+    - test -x ${PREFIX}/bin/htdestroytoken  # [unix]
 
 about:
   home: https://github.com/fermitools/htgettoken
