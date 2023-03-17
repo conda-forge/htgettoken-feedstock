@@ -1,11 +1,11 @@
-About htgettoken
-================
+About htgettoken-feedstock
+==========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/htgettoken-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/fermitools/htgettoken
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/htgettoken-feedstock/blob/main/LICENSE.txt)
 
 Summary: Get OIDC bearer tokens by interacting with Hashicorp vault
 
