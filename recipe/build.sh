@@ -12,6 +12,9 @@ _bin_programs=(
 _BINDIR="${PREFIX}/bin"
 mkdir -p ${_BINDIR}
 for _prog in ${_bin_programs[@]}; do
+	# fix the sheband for Python
+	sed -i.tmp 's|#!/usr/bin/env python|#!/opt/anaconda1anaconda2anaconda3/bin/python|' "${_prog}"
+	# install the script
 	install -v -m 0755 "${_prog}" "${_BINDIR}/"
 done
 
