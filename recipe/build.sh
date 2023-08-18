@@ -19,6 +19,9 @@ for _prog in ${_bin_programs[@]}; do
 	install -v -m 0755 "${_prog}" "${_BINDIR}/"
 done
 
+# make symlink to old name
+ln -s ${PREFIX}/bin/htdecodetoken ${PREFIX}/bin/httokendecode 
+
 # install the man pages
 _MAN1DIR="${PREFIX}/share/man/man1"
 mkdir -p ${_MAN1DIR}
