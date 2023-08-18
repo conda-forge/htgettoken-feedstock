@@ -5,7 +5,8 @@ set -ex
 _bin_programs=(
 "htdestroytoken"
 "htgettoken"
-"httokendecode"
+"htdecodetoken"
+"httokensh"
 )
 
 # install the scripts
