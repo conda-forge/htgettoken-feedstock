@@ -32,8 +32,9 @@ requirements:
 test:
   commands:
     - htgettoken --help
-    - test -x ${PREFIX}/bin/httokendecode  # [unix]
+    - test -x ${PREFIX}/bin/htdecodetoken  # [unix]
     - test -x ${PREFIX}/bin/htdestroytoken  # [unix]
+    - test -x ${PREFIX}/bin/httokensh  # [unix]
 
 about:
   home: https://github.com/fermitools/htgettoken
@@ -48,3 +49,4 @@ about:
 extra:
   recipe-maintainers:
     - duncanmmacleod
+    - beckermr
