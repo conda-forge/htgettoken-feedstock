@@ -1,5 +1,5 @@
 {% set name = "htgettoken" %}
-{% set version = "1.20" %}
+{% set version = "2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,30 +7,40 @@ package:
 
 source:
   url: https://github.com/fermitools/htgettoken/archive/v{{ version }}.tar.gz
-  sha256: 11d53046276986403c9e9d3eacc10fb4baa3d385d453111ecf3054438957dc36
+  sha256: 6c14bbc8909d5ecd3fd21a4bef92334aa353a9f8d5ae73d7c42edf1caa37b0b9
 
 build:
-  number: 1
+  entry_points:
+    - htgettoken = htgettoken:main
+  number: 0
   skip: true  # [win]
 
 requirements:
   build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - sed  # [unix]
+    - python                              # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
   host:
+    - pip
     - python
+    - setuptools >=30.3.0
+    - wheel
   run:
     - jq
-    - m2crypto
     - paramiko
-    - pykerberos  # [not win]
-    - pyopenssl
     - python
-    - winkerberos  # [win]
+    - python-gssapi
+    - urllib3
 
 test:
+  requires:
+    - pip
+  imports:
+    - htgettoken
   commands:
+    # check metadata
+    - python -m pip check
+    - python -m pip show htgettoken
+    # test scripts
     - htgettoken --help
     - test -x ${PREFIX}/bin/htdecodetoken  # [unix]
     - test -x ${PREFIX}/bin/htdestroytoken  # [unix]
