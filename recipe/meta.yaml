@@ -12,22 +12,26 @@ source:
 build:
   entry_points:
     - htgettoken = htgettoken:main
-  number: 0
-  skip: true  # [win]
+  noarch: python  # [win]
+  number: 1
+  script: {{ PYTHON }} -m pip install . -vv  # [win]
 
 requirements:
   build:
-    - python                              # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+    - python                              # [unix and build_platform != target_platform]
+    - cross-python_{{ target_platform }}  # [unix and build_platform != target_platform]
   host:
     - pip
-    - python
+    - python  # [unix]
+    - python >=3.5  # [win]
     - setuptools >=30.3.0
     - wheel
   run:
-    - jq
+    - __win  # [win]
+    - jq  # [unix]
     - paramiko
-    - python
+    - python  # [unix]
+    - python >=3.5  # [win]
     - python-gssapi
     - urllib3
 
