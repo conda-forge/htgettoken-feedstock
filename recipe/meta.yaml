@@ -1,5 +1,5 @@
 {% set name = "htgettoken" %}
-{% set version = "2.5" %}
+{% set version = "2.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/fermitools/htgettoken/archive/v{{ version }}.tar.gz
-  sha256: a5fd9d81883d7bc3bcd192ee5e0e477e71b3297a25da063b97bc6779309eb67a
+  sha256: d553d40b8b1ad794d4fa36e4a88e4c6343f12bc4498b3143d297d1c60d1877b4
 
 build:
   entry_points:
