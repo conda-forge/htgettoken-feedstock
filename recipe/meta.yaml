@@ -18,19 +18,20 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
     - setuptools >=30.3.0
     - wheel
   run:
     - jq
     - paramiko
-    - python
+    - python >={{ python_min }}
     - python-gssapi
     - urllib3
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   imports:
     - htgettoken
   commands:
