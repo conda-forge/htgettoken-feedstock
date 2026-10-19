@@ -3,7 +3,7 @@
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   url: https://github.com/fermitools/htgettoken/archive/v{{ version }}.tar.gz
@@ -12,28 +12,26 @@ source:
 build:
   entry_points:
     - htgettoken = htgettoken:main
-  number: 0
-  skip: true  # [win]
+  number: 1
+  noarch: python
 
 requirements:
-  build:
-    - python                              # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
   host:
     - pip
-    - python
+    - python {{ python_min }}
     - setuptools >=30.3.0
     - wheel
   run:
     - jq
     - paramiko
-    - python
+    - python >={{ python_min }}
     - python-gssapi
     - urllib3
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   imports:
     - htgettoken
   commands:
@@ -42,9 +40,9 @@ test:
     - python -m pip show htgettoken
     # test scripts
     - htgettoken --help
-    - test -x ${PREFIX}/bin/htdecodetoken  # [unix]
-    - test -x ${PREFIX}/bin/htdestroytoken  # [unix]
-    - test -x ${PREFIX}/bin/httokensh  # [unix]
+    - test -x ${PREFIX}/bin/htdecodetoken
+    - test -x ${PREFIX}/bin/htdestroytoken
+    - test -x ${PREFIX}/bin/httokensh
 
 about:
   home: https://github.com/fermitools/htgettoken
