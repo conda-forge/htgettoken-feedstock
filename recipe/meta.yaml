@@ -13,12 +13,9 @@ build:
   entry_points:
     - htgettoken = htgettoken:main
   number: 1
-  skip: true  # [win]
+  noarch: python
 
 requirements:
-  build:
-    - python                              # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
   host:
     - pip
     - python
@@ -42,9 +39,9 @@ test:
     - python -m pip show htgettoken
     # test scripts
     - htgettoken --help
-    - test -x ${PREFIX}/bin/htdecodetoken  # [unix]
-    - test -x ${PREFIX}/bin/htdestroytoken  # [unix]
-    - test -x ${PREFIX}/bin/httokensh  # [unix]
+    - test -x ${PREFIX}/bin/htdecodetoken
+    - test -x ${PREFIX}/bin/htdestroytoken
+    - test -x ${PREFIX}/bin/httokensh
 
 about:
   home: https://github.com/fermitools/htgettoken
